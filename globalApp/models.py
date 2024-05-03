@@ -20,10 +20,13 @@ class Donneur(models.Model):
 
 
 class Annonce(models.Model):
-    utilisateur = models.OneToOneField(Utilisateur , on_delete=models.CASCADE, related_name='cree_annonce')
+    utilisateur = models.ForeignKey(Utilisateur , on_delete=models.CASCADE, related_name='cree_annonce')
     description = models.CharField(max_length=100 , null=True )
     groupSanguin= models.CharField(max_length=2)
+    place = models.CharField(max_length=30 , null=True)
     date_de_publication = models.DateTimeField(auto_now_add= True)
+    date_de_Don_max = models.DateTimeField(null=True)
+    numerotelephone= models.IntegerField(null=True)
     date_de_modification= models.DateTimeField(auto_now= True , null= True)
 
 class Notification(models.Model):
